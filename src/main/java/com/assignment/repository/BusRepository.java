@@ -15,6 +15,16 @@ public class BusRepository {
             return false;
         }
 
+        // Reject invalid bus ID (B1)
+    if (!bus.validateBusID()) {
+        return false;
+    }
+
+    // Reject invalid fuel type
+    if (!bus.validateBusFuelType()) {
+        return false;
+    }
+
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
                      
             writer.write(
@@ -85,6 +95,10 @@ public class BusRepository {
 
             if (buses.get(i).getBusID().equals(busID)) {
 
+                // B2: capacity cannot increase
+                if (updatedBus.getCapacity() > buses.get(i).getCapacity()) {
+                return false;
+                }
                 buses.set(i, updatedBus);
                 updated = true;
                 break;

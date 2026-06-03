@@ -88,10 +88,34 @@ public boolean validateDriverAddress(){
 }
 public boolean validateDriverBirthdate(){
 
-    if (birthdate == null) {
-            return false;
-        }
-        return birthdate.matches("\\d{2}-\\d{2}-\\d{4}");
+    // Check format DD-MM-YYYY
+    if (!birthdate.matches("\\d{2}-\\d{2}-\\d{4}")) {
+        return false;
+    }
+    
+    String[] parts = birthdate.split("-");
+    int day   = Integer.parseInt(parts[0]);
+    int month = Integer.parseInt(parts[1]);
+    int year  = Integer.parseInt(parts[2]);
+
+    // Validate month range
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    // Validate year is not in the future
+    int currentYear = LocalDate.now().getYear();
+    if (year > currentYear) {
+        return false;
+    }
+
+    // Validate day using YearMonth to handle leap years and month lengths
+    int maxDay = java.time.YearMonth.of(year, month).lengthOfMonth();
+    if (day < 1 || day > maxDay) {
+        return false;
+    }
+
+    return true;
 }
 
 public boolean validateDriverLicense(){

@@ -15,7 +15,7 @@ public class BusAndDriver {
     }
     //Reject drivers with less than 5 years of experience from electric bus
     public boolean electricBusRestriction(Driver d,Bus b){
-        if(b.getFuelType().equals("Electric") && d.getExperienceYears() < 5){
+        if(b.getFuelType().equals("Electricity") && d.getExperienceYears() < 5){
             return false;
         }
         return true;

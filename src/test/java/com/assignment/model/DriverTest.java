@@ -10,20 +10,13 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
  */
 class DriverTest {
 
-   private Driver createDriver(String driverID, String address, String birthdate) {
-      return new Driver(
-            driverID,
+   @Test
+   void tcD101ValidDriverIdFormatShouldBeAccepted() {
+      Driver driver = new Driver(
+            "45@#abCDXY",
             "John Smith",
             8,
             "Medium",
-            address,
-            birthdate);
-   }
-
-   @Test
-   void tcD101ValidDriverIdFormatShouldBeAccepted() {
-      Driver driver = createDriver(
-            "45@#abCDXY",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1995");
 
@@ -32,8 +25,11 @@ class DriverTest {
 
    @Test
    void tcD102DriverIdStartingWithOneShouldBeRejected() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "15@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1995");
 
@@ -42,8 +38,11 @@ class DriverTest {
 
    @Test
    void tcD103DriverIdWithLowercaseFinalCharactersShouldBeRejected() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "45@#abCDxy",
+            "John Smith",
+            8,
+            "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1995");
 
@@ -52,8 +51,11 @@ class DriverTest {
 
    @Test
    void tcD201ValidPipeDelimitedAddressShouldBeAccepted() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1995");
 
@@ -62,8 +64,11 @@ class DriverTest {
 
    @Test
    void tcD202AddressMissingCountryShouldBeRejected() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
             "12|King Street|Melbourne|VIC",
             "01-01-1995");
 
@@ -72,8 +77,11 @@ class DriverTest {
 
    @Test
    void tcD203AddressUsingCommaDelimiterShouldBeRejected() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
             "12,King Street,Melbourne,VIC,Australia",
             "01-01-1995");
 
@@ -82,8 +90,11 @@ class DriverTest {
 
    @Test
    void tcD301ValidBirthdateFormatShouldBeAccepted() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1995");
 
@@ -92,8 +103,11 @@ class DriverTest {
 
    @Test
    void tcD302WrongBirthdateFormatShouldBeRejected() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "1995-01-01");
 
@@ -102,8 +116,11 @@ class DriverTest {
 
    @Test
    void tcD303InvalidCalendarDateShouldBeRejected() {
-      Driver driver = createDriver(
+      Driver driver = new Driver(
             "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "31-13-1995");
 

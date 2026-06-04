@@ -39,26 +39,17 @@ class DriverRepositoryTest {
       }
    }
 
-   private Driver createDriver(String driverID, String name, int experienceYears,
-         String licenseType, String address, String birthdate) {
-      return new Driver(driverID, name, experienceYears, licenseType, address, birthdate);
-   }
-
-   private Driver createValidDriver(String driverID) {
-      return createDriver(
-            driverID,
+   @Test
+   void tcD401LicenceUpgradeWithLessThanTenYearsExperienceShouldBeAllowed() {
+      DriverRepository repository = new DriverRepository();
+      Driver originalDriver = new Driver(
+            "45@#abCDXY",
             "John Smith",
             8,
             "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1995");
-   }
-
-   @Test
-   void tcD401LicenceUpgradeWithLessThanTenYearsExperienceShouldBeAllowed() {
-      DriverRepository repository = new DriverRepository();
-      Driver originalDriver = createValidDriver("45@#abCDXY");
-      Driver updatedDriver = createDriver(
+      Driver updatedDriver = new Driver(
             "45@#abCDXY",
             "John Smith",
             8,
@@ -73,14 +64,14 @@ class DriverRepositoryTest {
    @Test
    void tcD402LicenceUpgradeWithMoreThanTenYearsExperienceShouldBeRejected() {
       DriverRepository repository = new DriverRepository();
-      Driver originalDriver = createDriver(
+      Driver originalDriver = new Driver(
             "45@#abCDXY",
             "John Smith",
             12,
             "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1990");
-      Driver updatedDriver = createDriver(
+      Driver updatedDriver = new Driver(
             "45@#abCDXY",
             "John Smith",
             12,
@@ -95,14 +86,14 @@ class DriverRepositoryTest {
    @Test
    void tcD403NonLicenceUpdateWithMoreThanTenYearsExperienceShouldBeAllowed() {
       DriverRepository repository = new DriverRepository();
-      Driver originalDriver = createDriver(
+      Driver originalDriver = new Driver(
             "45@#abCDXY",
             "John Smith",
             12,
             "Medium",
             "12|King Street|Melbourne|VIC|Australia",
             "01-01-1990");
-      Driver updatedDriver = createDriver(
+      Driver updatedDriver = new Driver(
             "45@#abCDXY",
             "John Smith",
             12,
@@ -117,8 +108,14 @@ class DriverRepositoryTest {
    @Test
    void tcD501AttemptingToChangeDriverIdShouldBeRejected() {
       DriverRepository repository = new DriverRepository();
-      Driver originalDriver = createValidDriver("45@#abCDXY");
-      Driver updatedDriver = createDriver(
+      Driver originalDriver = new Driver(
+            "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
+            "12|King Street|Melbourne|VIC|Australia",
+            "01-01-1995");
+      Driver updatedDriver = new Driver(
             "46@#abCDXY",
             "John Smith",
             8,
@@ -133,8 +130,14 @@ class DriverRepositoryTest {
    @Test
    void tcD502AttemptingToChangeDriverNameShouldBeRejected() {
       DriverRepository repository = new DriverRepository();
-      Driver originalDriver = createValidDriver("45@#abCDXY");
-      Driver updatedDriver = createDriver(
+      Driver originalDriver = new Driver(
+            "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
+            "12|King Street|Melbourne|VIC|Australia",
+            "01-01-1995");
+      Driver updatedDriver = new Driver(
             "45@#abCDXY",
             "Jane Smith",
             8,
@@ -149,8 +152,14 @@ class DriverRepositoryTest {
    @Test
    void tcD503UpdatingMutableDriverFieldsShouldBeAllowed() {
       DriverRepository repository = new DriverRepository();
-      Driver originalDriver = createValidDriver("45@#abCDXY");
-      Driver updatedDriver = createDriver(
+      Driver originalDriver = new Driver(
+            "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
+            "12|King Street|Melbourne|VIC|Australia",
+            "01-01-1995");
+      Driver updatedDriver = new Driver(
             "45@#abCDXY",
             "John Smith",
             8,
@@ -165,7 +174,13 @@ class DriverRepositoryTest {
    @Test
    void tcDint01ValidDriverDataShouldBePersistedToTextStorage() {
       DriverRepository repository = new DriverRepository();
-      Driver driver = createValidDriver("45@#abCDXY");
+      Driver driver = new Driver(
+            "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
+            "12|King Street|Melbourne|VIC|Australia",
+            "01-01-1995");
 
       assertTrue(repository.add(driver));
 
@@ -179,7 +194,7 @@ class DriverRepositoryTest {
    @Test
    void tcDint02InvalidDriverIdShouldNotBePersisted() {
       DriverRepository repository = new DriverRepository();
-      Driver invalidDriver = createDriver(
+      Driver invalidDriver = new Driver(
             "15@#abCDXY",
             "John Smith",
             8,
@@ -194,8 +209,14 @@ class DriverRepositoryTest {
    @Test
    void tcDint03DriverUpdatesShouldPersistAcrossRepositoryReloads() {
       DriverRepository repository = new DriverRepository();
-      Driver originalDriver = createValidDriver("45@#abCDXY");
-      Driver updatedDriver = createDriver(
+      Driver originalDriver = new Driver(
+            "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
+            "12|King Street|Melbourne|VIC|Australia",
+            "01-01-1995");
+      Driver updatedDriver = new Driver(
             "45@#abCDXY",
             "John Smith",
             8,
@@ -216,7 +237,13 @@ class DriverRepositoryTest {
    @Test
    void tcDint04DriverRegistryCountShouldIncreaseAfterAddingValidDriver() {
       DriverRepository repository = new DriverRepository();
-      Driver driver = createValidDriver("45@#abCDXY");
+      Driver driver = new Driver(
+            "45@#abCDXY",
+            "John Smith",
+            8,
+            "Medium",
+            "12|King Street|Melbourne|VIC|Australia",
+            "01-01-1995");
 
       assertEquals(0, repository.count());
       assertTrue(repository.add(driver));

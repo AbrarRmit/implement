@@ -28,6 +28,25 @@ public class DriverRepository {
 
             return false;
         }
+        // Reject invalid address format
+        if (!driver.validateDriverAddress()) {
+            return false;
+        }
+
+        // Reject invalid birthdate format
+        if (!driver.validateDriverBirthdate()) {
+            return false;
+        }
+
+        // Reject invalid license type
+        if (!driver.validateDriverLicense()) {
+            return false;
+        }
+
+        // Reject duplicate driver ID
+        if (drivers.containsKey(driver.getDriverID())) {
+            return false;
+        }
 
         drivers.put(driver.getDriverID(), driver);
 
@@ -63,17 +82,17 @@ public class DriverRepository {
         Driver oldDriver = drivers.get(driverID);
 
         // driverID cannot change
-        if (!oldDriver.getDriverID().equals(updatedDriver.getDriverID())) {
+        if (oldDriver.getDriverID().equals(updatedDriver.getDriverID())){
             return false;
         }
-
+       
         // name cannot change
         if (!oldDriver.getName().equals(updatedDriver.getName())) {
             return false;
         }
 
         //  licence type restriction
-        if (oldDriver.getExperienceYears() > 10 && oldDriver.getLicenseType().equals(updatedDriver.getLicenseType())) {
+        if (oldDriver.getExperienceYears() > 10 && !oldDriver.getLicenseType().equals(updatedDriver.getLicenseType())) {
             return false;
         }
 

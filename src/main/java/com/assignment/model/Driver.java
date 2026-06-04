@@ -144,7 +144,6 @@ public int getAge(){
 @Override
 public String toString() {
     //Address at the end because it already has |
-    return driverID + " | " + name + " | " + experienceYears + " | " + licenseType + " | " + birthdate  + " | " + address;
-           
+    return driverID + "|" + name + "|" + experienceYears + "|" + licenseType + "|" + birthdate  + "|" + address;     
 }
 }

@@ -28,6 +28,10 @@ public class DriverRepository {
 
             return false;
         }
+        // Reject invalid driver ID (D1)
+        if (!driver.validateDriverID()) {
+        return false;
+        }
         // Reject invalid address format
         if (!driver.validateDriverAddress()) {
             return false;
@@ -40,11 +44,6 @@ public class DriverRepository {
 
         // Reject invalid license type
         if (!driver.validateDriverLicense()) {
-            return false;
-        }
-
-        // Reject duplicate driver ID
-        if (drivers.containsKey(driver.getDriverID())) {
             return false;
         }
 
@@ -82,7 +81,7 @@ public class DriverRepository {
         Driver oldDriver = drivers.get(driverID);
 
         // driverID cannot change
-        if (oldDriver.getDriverID().equals(updatedDriver.getDriverID())){
+        if (!oldDriver.getDriverID().equals(updatedDriver.getDriverID())){
             return false;
         }
        
@@ -115,7 +114,7 @@ public class DriverRepository {
     
     // Load drivers from text file
     private void loadDriversFromFile() {
-
+        
         File file = new File(FILE_NAME);
 
         // File may not exist initially
@@ -139,12 +138,12 @@ public class DriverRepository {
                 }
 
                 Driver driver = new Driver(
-                        data[0],
-                        data[1],
-                        Integer.parseInt(data[2]),
-                        data[3],
-                        data[4],
-                        data[5]
+                        data[0],// driverID
+                        data[1],// name
+                        Integer.parseInt(data[2]),// experienceYears
+                        data[3],// licenseType
+                        data[5],// address
+                        data[4] // birthdate 
                 );
 
                 drivers.put(driver.getDriverID(), driver);

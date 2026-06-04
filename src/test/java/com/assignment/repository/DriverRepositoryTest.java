@@ -40,7 +40,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcD401LicenceUpgradeWithLessThanTenYearsExperienceShouldBeAllowed() {
+   void licenceUpgradeWithLessThanTenYearsExperienceShouldBeAllowed() {
       DriverRepository repository = new DriverRepository();
       Driver originalDriver = new Driver(
             "45@#abCDXY",
@@ -62,7 +62,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcD402LicenceUpgradeWithMoreThanTenYearsExperienceShouldBeRejected() {
+   void licenceUpgradeWithMoreThanTenYearsExperienceShouldBeRejected() {
       DriverRepository repository = new DriverRepository();
       Driver originalDriver = new Driver(
             "45@#abCDXY",
@@ -84,7 +84,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcD403NonLicenceUpdateWithMoreThanTenYearsExperienceShouldBeAllowed() {
+   void nonLicenceUpdateWithMoreThanTenYearsExperienceShouldBeAllowed() {
       DriverRepository repository = new DriverRepository();
       Driver originalDriver = new Driver(
             "45@#abCDXY",
@@ -106,7 +106,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcD501AttemptingToChangeDriverIdShouldBeRejected() {
+   void attemptingToChangeDriverIdShouldBeRejected() {
       DriverRepository repository = new DriverRepository();
       Driver originalDriver = new Driver(
             "45@#abCDXY",
@@ -128,7 +128,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcD502AttemptingToChangeDriverNameShouldBeRejected() {
+   void attemptingToChangeDriverNameShouldBeRejected() {
       DriverRepository repository = new DriverRepository();
       Driver originalDriver = new Driver(
             "45@#abCDXY",
@@ -150,7 +150,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcD503UpdatingMutableDriverFieldsShouldBeAllowed() {
+   void updatingMutableDriverFieldsShouldBeAllowed() {
       DriverRepository repository = new DriverRepository();
       Driver originalDriver = new Driver(
             "45@#abCDXY",
@@ -172,7 +172,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcDint01ValidDriverDataShouldBePersistedToTextStorage() {
+   void validDriverDataShouldBePersistedToTextStorage() {
       DriverRepository repository = new DriverRepository();
       Driver driver = new Driver(
             "45@#abCDXY",
@@ -192,7 +192,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcDint02InvalidDriverIdShouldNotBePersisted() {
+   void invalidDriverIdShouldNotBePersisted() {
       DriverRepository repository = new DriverRepository();
       Driver invalidDriver = new Driver(
             "15@#abCDXY",
@@ -207,7 +207,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcDint03DriverUpdatesShouldPersistAcrossRepositoryReloads() {
+   void driverUpdatesShouldPersistAcrossRepositoryReloads() {
       DriverRepository repository = new DriverRepository();
       Driver originalDriver = new Driver(
             "45@#abCDXY",
@@ -235,7 +235,7 @@ class DriverRepositoryTest {
    }
 
    @Test
-   void tcDint04DriverRegistryCountShouldIncreaseAfterAddingValidDriver() {
+   void driverRegistryCountShouldIncreaseAfterAddingValidDriver() {
       DriverRepository repository = new DriverRepository();
       Driver driver = new Driver(
             "45@#abCDXY",

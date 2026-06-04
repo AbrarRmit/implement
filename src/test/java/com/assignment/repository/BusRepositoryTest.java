@@ -40,7 +40,7 @@ class BusRepositoryTest {
    }
 
    @Test
-   void tcB201CapacityReductionShouldBeAllowed() {
+   void capacityReductionShouldBeAllowed() {
       BusRepository repository = new BusRepository();
       Bus originalBus = new Bus("12345678", 60, 90.0, "Diesel");
       Bus updatedBus = new Bus("12345678", 50, 90.0, "Diesel");
@@ -51,7 +51,7 @@ class BusRepositoryTest {
    }
 
    @Test
-   void tcB202CapacityIncreaseShouldBeRejected() {
+   void capacityIncreaseShouldBeRejected() {
       BusRepository repository = new BusRepository();
       Bus originalBus = new Bus("12345678", 50, 90.0, "Diesel");
       Bus updatedBus = new Bus("12345678", 60, 90.0, "Diesel");
@@ -61,7 +61,7 @@ class BusRepositoryTest {
    }
 
    @Test
-   void tcB203UnchangedCapacityShouldBeAllowed() {
+   void unchangedCapacityShouldBeAllowed() {
       BusRepository repository = new BusRepository();
       Bus originalBus = new Bus("12345678", 50, 90.0, "Diesel");
       Bus updatedBus = new Bus("12345678", 50, 80.0, "Diesel");
@@ -71,7 +71,7 @@ class BusRepositoryTest {
    }
 
    @Test
-   void tcBint01ValidBusDataShouldBePersistedToTextStorage() {
+   void validBusDataShouldBePersistedToTextStorage() {
       BusRepository repository = new BusRepository();
       Bus bus = new Bus("12345678", 60, 90.0, "Diesel");
 
@@ -84,7 +84,7 @@ class BusRepositoryTest {
    }
 
    @Test
-   void tcBint02InvalidBusIdLengthShouldNotBePersisted() {
+   void invalidBusIdLengthShouldNotBePersisted() {
       BusRepository repository = new BusRepository();
       Bus invalidBus = new Bus("1234567", 60, 90.0, "Diesel");
 
@@ -93,7 +93,7 @@ class BusRepositoryTest {
    }
 
    @Test
-   void tcBint03BusCapacityUpdateShouldPersistToTextStorage() {
+   void busCapacityUpdateShouldPersistToTextStorage() {
       BusRepository repository = new BusRepository();
       Bus originalBus = new Bus("12345678", 60, 90.0, "Diesel");
       Bus updatedBus = new Bus("12345678", 50, 90.0, "Diesel");
@@ -108,7 +108,7 @@ class BusRepositoryTest {
    }
 
    @Test
-   void tcBint04BusRegistryCountShouldIncreaseAfterAddingValidBus() {
+   void busRegistryCountShouldIncreaseAfterAddingValidBus() {
       BusRepository repository = new BusRepository();
       Bus bus = new Bus("12345678", 60, 90.0, "Diesel");
 

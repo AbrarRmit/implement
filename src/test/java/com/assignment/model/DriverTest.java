@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class DriverTest {
 
    @Test
-   void tcD101ValidDriverIdFormatShouldBeAccepted() {
+   void validDriverIdFormatShouldBeAccepted() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -24,7 +24,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD102DriverIdStartingWithOneShouldBeRejected() {
+   void driverIdStartingWithOneShouldBeRejected() {
       Driver driver = new Driver(
             "15@#abCDXY",
             "John Smith",
@@ -37,7 +37,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD103DriverIdWithLowercaseFinalCharactersShouldBeRejected() {
+   void driverIdWithLowercaseFinalCharactersShouldBeRejected() {
       Driver driver = new Driver(
             "45@#abCDxy",
             "John Smith",
@@ -50,7 +50,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD201ValidPipeDelimitedAddressShouldBeAccepted() {
+   void validPipeDelimitedAddressShouldBeAccepted() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -63,7 +63,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD202AddressMissingCountryShouldBeRejected() {
+   void addressMissingCountryShouldBeRejected() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -76,7 +76,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD203AddressUsingCommaDelimiterShouldBeRejected() {
+   void addressUsingCommaDelimiterShouldBeRejected() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -89,7 +89,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD301ValidBirthdateFormatShouldBeAccepted() {
+   void validBirthdateFormatShouldBeAccepted() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -102,7 +102,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD302WrongBirthdateFormatShouldBeRejected() {
+   void wrongBirthdateFormatShouldBeRejected() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -115,7 +115,7 @@ class DriverTest {
    }
 
    @Test
-   void tcD303InvalidCalendarDateShouldBeRejected() {
+   void invalidCalendarDateShouldBeRejected() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",

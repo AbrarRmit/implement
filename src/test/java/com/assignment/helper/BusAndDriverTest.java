@@ -15,7 +15,7 @@ class BusAndDriverTest {
    private final BusAndDriver validator = new BusAndDriver();
 
    @Test
-   void tcB301DriverUnderFiftyCanDriveLargeBus() {
+   void driverUnderFiftyCanDriveLargeBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -29,7 +29,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB302DriverOverFiftyCannotDriveLargeBus() {
+   void driverOverFiftyCannotDriveLargeBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -43,7 +43,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB303DriverOverFiftyCanDriveSmallBus() {
+   void driverOverFiftyCanDriveSmallBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -57,7 +57,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB401DriverWithFiveYearsExperienceCanDriveElectricBus() {
+   void driverWithFiveYearsExperienceCanDriveElectricBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -71,7 +71,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB402DriverWithLessThanFiveYearsExperienceCannotDriveElectricBus() {
+   void driverWithLessThanFiveYearsExperienceCannotDriveElectricBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -85,7 +85,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB403LowExperienceDriverCanDriveDieselBus() {
+   void lowExperienceDriverCanDriveDieselBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -99,7 +99,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB501HeavyLicenceDriverCanDriveHybridBus() {
+   void heavyLicenceDriverCanDriveHybridBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -113,7 +113,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB502PublicTransportLicenceDriverCanDriveElectricBus() {
+   void publicTransportLicenceDriverCanDriveElectricBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",
@@ -127,7 +127,7 @@ class BusAndDriverTest {
    }
 
    @Test
-   void tcB503MediumLicenceDriverCannotDriveElectricBus() {
+   void mediumLicenceDriverCannotDriveElectricBus() {
       Driver driver = new Driver(
             "45@#abCDXY",
             "John Smith",

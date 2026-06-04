@@ -11,21 +11,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class BusTest {
 
    @Test
-   void tcB101ValidEightDigitBusIdShouldBeAccepted() {
+   void validEightDigitBusIdShouldBeAccepted() {
       Bus bus = new Bus("12345678", 60, 90.0, "Diesel");
 
       assertTrue(bus.validateBusID());
    }
 
    @Test
-   void tcB102BusIdContainingAlphabeticCharacterShouldBeRejected() {
+   void busIdContainingAlphabeticCharacterShouldBeRejected() {
       Bus bus = new Bus("1234A678", 60, 90.0, "Diesel");
 
       assertFalse(bus.validateBusID());
    }
 
    @Test
-   void tcB103BusIdWithInvalidLengthShouldBeRejected() {
+   void busIdWithInvalidLengthShouldBeRejected() {
       Bus bus = new Bus("1234567", 60, 90.0, "Diesel");
 
       assertFalse(bus.validateBusID());
